@@ -51,6 +51,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/form-comments-style.css">
+  <link rel="stylesheet" href="css/custom-styles.css">
 </head>
 
 <body>
@@ -155,40 +156,109 @@
       <div class="content-wrapper__form">
         <div id="toform"></div>
         <div class="form-section__wrapper">
-          <div id="form-wrap">
-            <div id="product-bg-wrap">
-              <div id="product-bg">
-                <img src="img/prod.png" alt="">
+          <div class="hidden-content">
+            <div class="spin-wrapper">
+              <p><strong>Andiamo!</strong></p>
+              <p>
+                Prima di ordinare il prodotto, cliccate sulla
+                ruota e scoprite qual è lo sconto a voi
+                riservato.
+              </p>
+              <div class="wheel-wrarpper">
+                <div class="wheel">
+                  <img class="wheel-img" src="img/wheel.png">
+                  <div class="wheel-cursor">
+                    <img src="img/wheel-cursor.png">
+                    <span class="cursor-text spin_active">
+                                      GIRA
+                                    </span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div id="form">
-              <form id="my-form" class="order_form" geo="it" action="api.php" method="post" onsubmit="return validate_form(this, 'Si prega di inserire un numero di telefono valido');">
-    
+            <div class="order_block">
+              <div class="productsale">
+                <div class="prod_img_wrapper">
+                  <img src="img/prod.png">
+                  <p class="priceс">
+                                    <span class="discountс">
+                                      Offerta speciale
+                                    </span>
+                    <br>
+                    <span class="js_old_price price_old">
+                                      78€
+                                    </span>
+                    <br>
+                    <span class="price_main"> 39€ </span>
+                  </p>
+                </div>
+                <div class="timer">
+                  Offerta limitata, affrettatevi a ordinare
+                  <!--<p>
+                    <strong>L'effetto massimo di SwissDent si
+                      ottiene con un ciclo di 60-90
+                      giorni.</strong>
+                  </p>-->
+                  <div id="clock">
+                    <span id="min"></span>
+                    :
+                    <span id="sec"></span>
+                  </div>
+                </div>
+              </div>
+              <script>
+                $(document).ready(function () {
+                  $("a").click(function (e) {
+                    e.preventDefault();
+                    $("html, body").animate(
+                      {
+                        scrollTop: $("#rullet").offset().top,
+                      },
+                      1000
+                    );
+                  });
+                });
+              </script>
+        
+              <form class="main-order-form order_form" geo="it" action="api.php" method="post" onsubmit="return validate_form(this, 'Si prega di inserire un numero di telefono valido');">
+          
                 <input name="subid" type="hidden" value="{subid}">
                 <input name="px" type="hidden" value="{px}">
                 <input name="bayer" type="hidden" value="{bayer}">
-    
-                <div id="price">
-                  <p id="price-old">
-                    <span class="old_price_val">78€</span>
-                    <span class="old_price_cur"></span>
-                  </p>
-                  <span id="price-new">
-                                  <span class="new_price_val">39€</span>
-                                  <span class="new_price_cur"></span>
-                                </span>
-                </div>
-    
-                <label class="example">ad esempio: <em>Martina Marino</em></label>
-                <input style="border-bottom:2px solid #000000" class="form-input" name="name" type="text" placeholder="Nome" required="">
-    
-                <label class="example">ad esempio: <em>+39 321 1234567</em></label>
-                <input style="border-bottom:2px solid #000000" class="form-input" name="phone" type="tel" placeholder="Telefono (cellulare attivo)" required="">
-    
-                <button style="cursor: pointer" type="submit" name="submitBtn">
-                  ORDINA
+          
+                <label class="data_label" for="name">Il tuo nome</label>
+                <input class="wheel_input" name="name" placeholder="Nome" type="text" required="">
+          
+                <label class="data_label" for="phone">Telefono (cellulare attivo)</label>
+                <input class="wheel_input only_number val2" name="phone" placeholder="Numero di telefono" type="tel" required="">
+          
+                <button class="sub2 main-link button__text val_ad" type="submit">
+                  Ordine con il 50% di sconto!
                 </button>
+                <div class="toform"></div>
               </form>
+              <br>
+              <h2>
+                Si prega di notare che lo sconto speciale è
+                valido solo fino al
+                <span class="red">
+                                  <script type="text/javascript">
+                                    dtime_nums(0, true);
+                                  </script>19.02.2024
+                                </span>
+              </h2>
+            </div>
+            <div class="spin-result-wrapper" style="">
+              <div class="pop-up-window" style="">
+                <div class="close-popup"></div>
+                <span class="pop-up-heading">
+                              Congratulazioni!
+                            </span>
+                <p class="pop-up-text">
+                  Potete ordinare SwissDent con uno sconto del 50%
+                </p>
+                <button class="pop-up-button">OK</button>
+              </div>
             </div>
           </div>
         </div>
@@ -557,7 +627,8 @@
 </div>
 
 
-<script src="/js/main.js"></script>
+<script src="js/main.js"></script>
+<script src="js/wheel.js"></script>
 </body>
 
 </html>
