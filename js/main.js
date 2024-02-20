@@ -333,6 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
   (() => {
     let comments_toggle_button = document.querySelectorAll('.--js-comments-popup-toggle');
     let comments_close_button = document.querySelectorAll('.--js-comments-popup-close');
+    let comments_amount_text = document.querySelectorAll('.--js-comments-amount');
 
     for (let i=0; i < comments_toggle_button.length; i++) {
       comments_toggle_button[i].addEventListener('click', () => {
@@ -345,6 +346,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.remove('--popup-opened');
       });
     }
+
+    for (let i=0; i < comments_amount_text.length; i++) {
+      comments_amount_text[i].innerHTML = document.querySelectorAll('.popup-comment').length
+    }
+
+
   })();
 
   
